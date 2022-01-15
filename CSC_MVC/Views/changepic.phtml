@@ -1,0 +1,15 @@
+<?php require('template/header.phtml')?>
+
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
+    <h1>Changing Profile Picture</h1>
+    <hr>
+    <div>
+        <label class="control-label">Change Profile Picture!</label>
+        <div class="controls">
+            <input type="file" name="fileToUpload" id="fileToUpload">
+            <button type="submit" name ="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+
+<?php require('template/footer.phtml')?>

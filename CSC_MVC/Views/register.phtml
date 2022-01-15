@@ -1,0 +1,62 @@
+<?php require('template/header.phtml')?>
+
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <h1> Register </h1>
+                <h4 class="muted"> Please fill out the form below to make your account! </h4>
+                <hr>
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
+                    <div class="control-group">
+                        <label class="control-label">First Name</label>
+                        <div class="controls">
+                            <input name = "firstname" type="text" placeholder="First Name">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Last Name</label>
+                        <div class="controls">
+                            <input name = "lastname" type="text" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Email</label>
+                        <div class="controls">
+                            <input name = "email" type="email" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Username</label>
+                        <div class="controls">
+                            <input name = "username" type="text" placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Password</label>
+                        <div class="controls">
+                            <input name = "password" type="password" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Confirm Password</label>
+                        <div class="controls">
+                            <input name = "cpassword" type="password" placeholder="Confirm Password">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="control-label">Optional: Add a Profile Picture!</label>
+                        <div class="controls">
+                            <input type="file" name="fileToUpload" id="fileToUpload">
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" name ="submit" class="btn btn-primary">Sign Up</button>
+                        <button type="reset" class="btn">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+<?php require('template/footer.phtml') ?>

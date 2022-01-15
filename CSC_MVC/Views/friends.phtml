@@ -1,0 +1,89 @@
+<?php require('template/header.phtml');?>
+
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <h1>Incoming Requests</h1>
+            <hr>
+        </div>
+    </div>
+</div>
+
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-horizontal">
+<?php foreach($view->incoming as $userData) { ?>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-auto mb-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <img class="profile-pic mr-3" src="/CSC_MVC/images/<?php echo $userData->getProfilePic();?>" alt="placeholder">
+                        <div class="flex-column">
+                            <h3 class="mb-0 font-weight-normal"><?php echo $userData->getFirstName() . ' ' . $userData->getLastName(); ?></h3>
+                            <button type = "submit" class = "btn btn-primary" name = "buttonview" value ="<?php echo $userData->getID()?>">Go To Profile</button>
+                            <button type = "submit" class = "btn btn-success" name = "accept" value ="<?php echo $userData->getID()?>"> Accept </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+</form>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <h1>Pending Requests</h1>
+            <hr>
+        </div>
+    </div>
+</div>
+
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-horizontal">
+<?php foreach($view->pending as $userData) { ?>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-auto mb-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <img class="profile-pic mr-3" src="/CSC_MVC/images/<?php echo $userData->getProfilePic();?>" alt="placeholder">
+                        <div class="flex-column">
+                            <h3 class="mb-0 font-weight-normal"><?php echo $userData->getFirstName() . ' ' . $userData->getLastName(); ?></h3>
+                            <button type = "submit" class = "btn btn-primary" name = "buttonview" value ="<?php echo $userData->getID()?>">Go To Profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+</form>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <h1>Friends</h1>
+            <hr>
+        </div>
+    </div>
+</div>
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-horizontal">
+<?php foreach($view->friends as $userData) { ?>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-auto mb-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <img class="profile-pic mr-3" src="/CSC_MVC/images/<?php echo $userData->getProfilePic();?>" alt="placeholder">
+                        <div class="flex-column">
+                            <h3 class="mb-0 font-weight-normal"><?php echo $userData->getFirstName() . ' ' . $userData->getLastName(); ?></h3>
+                            <button type = "submit" class = "btn btn-primary" name = "buttonview" value ="<?php echo $userData->getID()?>">Go To Profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+</form>
+<?php require('template/header.phtml');?>
