@@ -15,30 +15,30 @@ class ChangePic {
 
         $db = mysqli_connect('localhost', 'root', '', 'Assignment1_CSS');
 
-        $target_dir = "../images/";
+        $target_dir = "./images/";
         $target_file = $target_dir . basename($myFile);
         $errors = array();
-        $uploadOk = 0;
+        $uploadOk = false;
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
         $check = getimagesize($myFileTemp);
         if($check !== false) {
-            $uploadOk = 1;
+            $uploadOk = true;
         } else {
-            $uploadOk = 0;
+            $uploadOk = false;
             array_push($errors, "File is not an image.");
         }
 
         //check if file already exists
         if (file_exists($target_file)) {
             array_push($errors, "Uploaded file already exists.");
-            $uploadOk = 0;
+            $uploadOk = false;
         }
 
         //check format
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
             array_push($errors, "Only jpg, jpeg, and png file formats allowed.");
-            $uploadOk = 0;
+            $uploadOk = false;
         }
 
         if (count($errors) > 0) : ?>
@@ -52,23 +52,20 @@ class ChangePic {
         if(count($errors) == 0) {
             $query = "SELECT PROFILE_PIC FROM Users WHERE ID = $id";
             $result = mysqli_query($db, $query);
-            $toDelete = $result;
-            if (file_exists($target_dir.'jpg')) {
-                unlink($toDelete . 'jpg');
+            while ($row = mysqli_fetch_assoc($result))
+            {
+                $toDelete = $row['PROFILE_PIC'];
             }
-            if (file_exists($target_dir.'jpeg')) {
-                unlink($toDelete . 'jpeg');
-            }
-            if (file_exists($target_dir.'png')) {
-                unlink($toDelete . 'png');
+            if (file_exists($target_dir.$toDelete)) {
+                unlink($target_dir.$toDelete);
             }
             move_uploaded_file($myFileTemp, $target_file);
             $profile_pic = mysqli_real_escape_string($db, basename($myFile));
             $query = "UPDATE Users SET PROFILE_PIC = '$profile_pic' WHERE ID = '$id'";
             mysqli_query($db, $query);
-            return uploadOk;
+            return $uploadOk;
         }
 
-        return uploadOk;
+        return $uploadOk;
     }
 }

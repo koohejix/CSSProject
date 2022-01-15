@@ -1,4 +1,11 @@
-body {
+
+.profile-pic {
+    border-radius: 50%;
+    object-fit: cover;
+    aspect-ratio: 1;
+}
+
+/* body {
     padding-top: 60px;
 }
 
@@ -24,13 +31,6 @@ body {
     text-align: left;
 }
 
-.profile-pic {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: contain;
-    background-color: #E0E0E0
-}
 
 .main-body {
     padding: 15px;
@@ -79,6 +79,6 @@ body {
 }
 .shadow-none {
     box-shadow: none!important;
-}
+} */
 
 

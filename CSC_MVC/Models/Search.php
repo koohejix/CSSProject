@@ -18,8 +18,11 @@ class Search
         $dataSet = [];
 
         foreach($search as $s) {
-            $sqlQuery = "SELECT * FROM Users WHERE FIRST_NAME LIKE '$s' OR 
-                     LAST_NAME LIKE '$s' OR USERNAME LIKE '$s'";
+            $sqlQuery = "SELECT * 
+                         FROM Users 
+                         WHERE FIRST_NAME LIKE '$s' 
+                         OR LAST_NAME LIKE '$s' 
+                         OR USERNAME LIKE '$s';";
 
             $statement = $this->_dbHandle->prepare($sqlQuery);
             $statement->execute();
@@ -28,6 +31,11 @@ class Search
                 $dataSet[] = new UsersData($row);
             }
         }
-        return $dataSet;
+        $result = array();
+        foreach ($dataSet as $key => $value){
+            if(!in_array($value, $result))
+                $result[$key]=$value;
+        }
+        return $result;
     }
 }

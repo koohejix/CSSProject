@@ -46,9 +46,9 @@ $view->userData = $userData->fetchUser($id);
 $addFriend = new Friends();
 
 
-if(isset($_POST['addFriend'])) {
+if(isset($_POST['addFriendId'])) {
     $userid = $_SESSION['userid'];
-    $friendid = $_REQUEST['addFriend'];
+    $friendid = $_POST['addFriendId'];
     $addFriend->Add($userid, $friendid);
     header("Location: friends.php");
 }

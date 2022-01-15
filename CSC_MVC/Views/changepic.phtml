@@ -1,15 +1,25 @@
 <?php require('template/header.phtml')?>
-
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
+<div class="container mt-1">
+    <div class="row">
+    <div class="col"></div>
+    <div class="col-6">
     <h1>Changing Profile Picture</h1>
-    <hr>
-    <div>
-        <label class="control-label">Change Profile Picture!</label>
-        <div class="controls">
-            <input type="file" name="fileToUpload" id="fileToUpload">
-            <button type="submit" name ="submit" class="btn btn-primary">Submit</button>
+
+    <form  method="post" class="form-horizontal" enctype="multipart/form-data">
+                <hr>
+                <div>
+                    <label class="control-label">Change Profile Picture!</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="fileToUpload" id="customFile">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                    <button type="submit" name ="submit" class="btn btn-primary mt-2">Submit</button>
+                </div>
+            </form>
         </div>
+        <div class="col"></div>
     </div>
-</form>
+    
+</div>
 
 <?php require('template/footer.phtml')?>

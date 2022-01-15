@@ -3,13 +3,13 @@ session_start();
 
 require_once('Models/ChangePic.php');
 
-$id = $_POST['userid'];
+$id = $_SESSION['userid'];
 
 if(isset($_POST['submit']) && $_FILES["fileToUpload"]["name"] != '') {
-    $check = new ChangePic();
+    $changePicModel = new ChangePic();
     $myFile = $_FILES["fileToUpload"]["name"];
     $myFileTemp = $_FILES["fileToUpload"]["tmp_name"];
-    if($check->updatePicture($myFile, $myFileTemp, $id)) {
+    if($changePicModel->updatePicture($myFile, $myFileTemp, $id)) {
         header("Location: myprofile.php");
     }
     else { ?>
