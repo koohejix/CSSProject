@@ -2,7 +2,7 @@
 
 class UsersData {
 
-    protected $_id, $_firstName, $_lastName, $_username, $_password, $_email, $_profilePic, $_location;
+    protected $_id, $_firstName, $_lastName, $_username, $_password, $_email, $_profilePic, $_latitude, $_longitude;
 
     public function __construct($dbRow) {
         $this->_id = $dbRow['ID'];
@@ -12,7 +12,8 @@ class UsersData {
         $this->_password = $dbRow['PASSWORD'];
         $this->_email = $dbRow['EMAIL'];
         $this->_profilePic = $dbRow['PROFILE_PIC'];
-        $this->_location = $dbRow['LOCATION'];
+        $this->_latitude = $dbRow['LATITUDE'];
+        $this->_longitude = $dbRow['LONGITUDE'];
     }
 
     public function getID() {
@@ -43,7 +44,11 @@ class UsersData {
         return $this->_profilePic;
     }
 
-    public function getLocation() {
-        return $this->_location;
+    public function getLatitude() {
+        return $this->_latitude;
+    }
+
+    public function getLongitude() {
+        return $this->_longitude;
     }
 }
