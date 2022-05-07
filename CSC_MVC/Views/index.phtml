@@ -7,9 +7,17 @@
             <hr>
         </div>
     </div>
-    <div class="row">
 
-        <?php foreach($view->userDataSet as $userData) { ?>
+    <script>
+        window.onscroll = function(ev) {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+
+            }
+        };
+    </script>
+
+    <div class="row" id="scroll">
+        <?php foreach($view->users as $userData) { ?>
                 <div class="col-3 mb-3">
                     <div class="card w-100">
                         <div class="card-body">

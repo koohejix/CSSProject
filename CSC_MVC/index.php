@@ -32,6 +32,12 @@ $view = new stdClass();
 $userDataSet = new AllUsers();
 $view->userDataSet = $userDataSet->fetchAllUsers();
 
+$offset = 0;
+$users = new AllUsers();
+$view->users = $users->fetchUsers(0);
+
+
+
 if(isset($_POST['buttonview'])) {
     $id = $_REQUEST['buttonview'];
     header("Location: profile.php?id=$id");
