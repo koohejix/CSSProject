@@ -24,7 +24,7 @@ class AllUsers {
     }
 
     public function fetchUsers($offset) {
-        $sqlQuery = "SELECT * FROM Users LIMIT 25 OFFSET $offset ";
+        $sqlQuery = "SELECT * FROM Users LIMIT 25 OFFSET $offset";
 
         $statement = $this->_dbHandle->prepare($sqlQuery); // prepare a PDO statement
         $statement->execute(); // execute the PDO statement

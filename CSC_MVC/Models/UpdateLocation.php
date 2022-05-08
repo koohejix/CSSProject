@@ -13,7 +13,7 @@ class UpdateLocation
     }
 
     public function updateLocation($myID, $lat, $long) {
-        $sqlQuery = "UPDATE Users SET LATITUDE = '$lat' AND LONGITUDE = '$long' WHERE ID = '$myID'";
+        $sqlQuery = "UPDATE Users SET LATITUDE = '$lat' , LONGITUDE = '$long' WHERE ID = '$myID'";
         $statement = $this->_dbHandle->prepare($sqlQuery);
         $statement->execute();
     }

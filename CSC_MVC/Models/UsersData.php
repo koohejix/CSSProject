@@ -2,7 +2,7 @@
 
 class UsersData {
 
-    protected $_id, $_firstName, $_lastName, $_username, $_password, $_email, $_profilePic, $_latitude, $_longitude;
+    public $_id, $_firstName, $_lastName, $_username, $_password, $_email, $_profilePic, $_latitude, $_longitude;
 
     public function __construct($dbRow) {
         $this->_id = $dbRow['ID'];

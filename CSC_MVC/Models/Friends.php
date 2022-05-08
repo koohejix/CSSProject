@@ -98,4 +98,15 @@ class Friends
         }
         return $dataSet2;
     }
+
+    public function checkFriend ($myID, $friendID) {
+        $sqlQuery = "SELECT * FROM Users_Relations WHERE ID = '$myID' AND F_ID = '$friendID' AND STATUS = 'ACCEPTED'";
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->execute();
+
+        if ($statement->rowCount() > 0)
+            return true;
+        else
+            return false;
+    }
 }

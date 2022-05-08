@@ -1,26 +1,23 @@
 function updateLocation () {
-    function setCookie(cName, cValue, expDays) {
-        let date = new Date();
-        date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
-        const expires = "expires=" + date.toUTCString();
-        document.cookie = cName + "=" + cValue + "; " + expires + "; path=/";
-    }
+    let id = document.getElementById("current-id").value;
+    fetch("locationFetcher.php?id=" + id)
+    .then(response => response.json())
+    .then((data) => {
+        // change current-user-location to the new location
+        document.getElementById("current-user-location").innerHTML = data.lat + ", " + data.lng;
 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                const pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude,
-                };
+        let lat = Number(data.lat);
+        let lng = Number(data.lng);
+        var latlng = new google.maps.LatLng(lat, lng);
 
-                setCookie('MyLong', position.coords.longitude, 30);
-                setCookie('MyLat', position.coords.latitude, 30);
+        marker.setPosition(latlng);
+        map.setCenter({
+            lat : lat,
+            lng : lng
+        });
+    });
 
-            })
-
-
-    }
 }
-
-    setInterval(updateLocation(), 10000);
+setTimeout(() => {
+    setInterval(updateLocation, 1000);
+}, 1000);

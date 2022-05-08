@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once('Models/ProfilePopulate.php');
 require_once('Models/Friends.php');
 
 //check login
@@ -42,6 +43,9 @@ $view->pending = $Friends->displayPending($id);
 $view->incoming = $Friends->displayIncoming($id);
 $view->friends = $Friends->displayFriends($id);
 
+$Map = new ProfilePopulate();
+$view->map = $Map->fetchUser($id);
+
 if(isset($_POST['buttonview'])) {
     $id = $_REQUEST['buttonview'];
     header("Location: profile.php?id=$id");
@@ -54,6 +58,5 @@ if(isset($_POST['accept'])) {
     $Friends->Accept($userid, $id);
     Header('Location: friends.php');
 }
-
 
 require_once('Views/friends.phtml');
